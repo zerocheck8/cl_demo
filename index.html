@@ -2,7 +2,7 @@
 <html lang="es-CL">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>SHEIN Contratación</title>
     <style>
         * {
@@ -16,6 +16,8 @@
             background-color: #f5f5f5;
             overflow-x: hidden;
             width: 100%;
+            font-size: 16px;
+            line-height: 1.5;
         }
         
         .main-content {
@@ -99,6 +101,13 @@
             text-decoration: none;
             margin: 30px auto;
             max-width: 400px;
+            transition: background-color 0.3s, transform 0.2s;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .whatsapp-button:active {
+            background-color: #1976d2;
+            transform: scale(0.98);
         }
         
         .limited-box {
@@ -218,9 +227,11 @@
             cursor: pointer;
             z-index: 10;
             transition: background 0.3s;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
         
-        .slider-nav:hover {
+        .slider-nav:hover, .slider-nav:active {
             background: rgba(0,0,0,0.7);
         }
         
@@ -343,6 +354,129 @@
         /* 响应式适配优化 */
         @media (max-width: 480px) {
             .main-content {
+                padding: 10px;
+            }
+            
+            .content-card {
+                padding: 12px;
+                margin-bottom: 15px;
+            }
+            
+            .title {
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+            
+            .salary {
+                font-size: 16px;
+                margin-bottom: 15px;
+            }
+            
+            .welcome {
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+            
+            .message {
+                font-size: 14px;
+                line-height: 1.4;
+                margin-bottom: 15px;
+            }
+            
+            .whatsapp-button {
+                font-size: 16px;
+                padding: 12px;
+                margin: 20px auto;
+            }
+            
+            .limited-title {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            
+            .limited-count, .limited-max {
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+            
+            .limited-count span, .limited-max span {
+                font-size: 18px;
+            }
+            
+            .time-estimate {
+                font-size: 16px;
+            }
+            
+            .job-description {
+                font-size: 14px;
+                line-height: 1.5;
+                margin: 15px 0;
+            }
+            
+            .feature-item {
+                margin-bottom: 10px;
+            }
+            
+            .feature-text {
+                font-size: 14px;
+            }
+            
+            .cta-button {
+                font-size: 16px;
+                margin: 15px 0;
+            }
+            
+            .faq-title, .about-title {
+                font-size: 20px;
+                margin: 20px 0 15px;
+            }
+            
+            .question {
+                font-size: 16px;
+                margin-bottom: 8px;
+            }
+            
+            .answer {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+            
+            .about-content {
+                font-size: 14px;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+            
+            .privacy-notice {
+                font-size: 12px;
+                padding: 10px;
+                margin: 20px 0 15px;
+            }
+            
+            .privacy-highlight {
+                font-size: 13px;
+                margin-bottom: 8px;
+            }
+            
+            .slider-nav {
+                width: 30px;
+                height: 30px;
+                font-size: 18px;
+            }
+            
+            .carousel {
+                height: 250px;
+            }
+            
+            .spanish-text {
+                font-size: 12px;
+                padding: 3px 0;
+            }
+        }
+
+        /* 添加中等尺寸设备的适配 */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .main-content {
                 padding: 15px;
             }
             
@@ -354,13 +488,16 @@
                 font-size: 22px;
             }
             
-            .salary {
-                font-size: 16px;
+            .welcome {
+                font-size: 22px;
             }
             
-            .whatsapp-button {
-                font-size: 16px;
-                padding: 12px;
+            .message {
+                font-size: 15px;
+            }
+            
+            .job-description, .feature-text, .answer, .about-content {
+                font-size: 15px;
             }
         }
     </style>
