@@ -116,6 +116,71 @@
             padding: 20px;
             margin-top: 20px;
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+        
+        .limited-box-wrapper {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .limited-box-wrapper:hover .limited-box {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            background-color: #fff5d6;
+        }
+        
+        .limited-box-wrapper:active .limited-box {
+            transform: scale(0.95);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+            background-color: #fff2c7;
+        }
+        
+        .limited-box::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .limited-box-wrapper:hover .limited-box::after {
+            opacity: 1;
+        }
+        
+        .limited-box-wrapper:active .limited-box::after {
+            opacity: 0.5;
+        }
+        
+        .limited-box-wrapper .whatsapp-button {
+            background-color: #25D366;
+            margin: 20px auto 0;
+            font-weight: bold;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .limited-box-wrapper:hover .whatsapp-button {
+            transform: scale(1.05);
+            background-color: #23c160;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .limited-box-wrapper:active .whatsapp-button {
+            transform: scale(0.98);
         }
         
         .limited-title {
@@ -517,29 +582,31 @@
             
             <div class="salary">Sueldo por hora: 20.000 - 50.000 pesos chilenos</div>
             
-            <div class="welcome">¡Bienvenido a nuestro equipo!</div>
-            
-            <div class="message">¡Gracias por tu interés! Has completado el proceso de solicitud.</div>
-            
-            <div class="message">Agrega a nuestro personal en WhatsApp y envía "solicitud" para comenzar tu proceso de incorporación.</div>
-            
-            <a href="https://wa.me/+1234567890" class="whatsapp-button">Agréganos en WhatsApp</a>
-            
-            <div class="limited-box">
-                <div class="limited-title">¡Plazas limitadas, postula ahora!</div>
+            <a href="https://wa.me/+1234567890" class="limited-box-wrapper">
+                <div class="limited-box">
+                    <div class="limited-title">¡Plazas limitadas, postula ahora!</div>
+                    
+                    <div class="limited-count">
+                        Hasta ahora, hemos recibido <span id="random-count">169</span> solicitudes.
+                    </div>
+                    
+                    <div class="limited-max">
+                        El límite de solicitudes es de <span>200</span> ¡postula antes que se acabe el plazo!
+                    </div>
+                    
+                    <div class="time-estimate">
+                        Tiempo estimado de llamada: 5-10 minutos.
+                    </div>
+                    
+                    <div class="welcome">¡Bienvenido a nuestro equipo!</div>
                 
-                <div class="limited-count">
-                    Hasta ahora, hemos recibido <span>169</span> solicitudes.
+                    <div class="message">¡Gracias por tu interés! Has completado el proceso de solicitud.</div>
+                    
+                    <div class="message">Agrega a nuestro personal en WhatsApp y envía "solicitud" para comenzar tu proceso de incorporación.</div>
+                    
+                    <div class="whatsapp-button">Envie e entre em contato conosco via WhatsApp</div>
                 </div>
-                
-                <div class="limited-max">
-                    El límite de solicitudes es de <span>200</span> ¡postula antes que se acabe el plazo!
-                </div>
-                
-                <div class="time-estimate">
-                    Tiempo estimado de llamada: 15 minutos.
-                </div>
-            </div>
+            </a>
         </div>
         
         <!-- 第二屏内容 -->
@@ -675,6 +742,10 @@
             
             // 自动轮播
             setInterval(nextSlide, 5000);
+            
+            // 随机显示申请数量(160-199)
+            const randomCount = Math.floor(Math.random() * 40) + 160;
+            document.getElementById('random-count').textContent = randomCount;
         };
     </script>
 </body>
