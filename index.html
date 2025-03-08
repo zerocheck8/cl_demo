@@ -266,6 +266,14 @@
             background-color: rgba(229, 57, 53, 0.08);
             max-width: 400px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            animation: sharedPulseEffect 1s infinite alternate ease-in-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .time-estimate:hover {
+            animation-play-state: paused;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(229, 57, 53, 0.2);
         }
         
         .job-details {
@@ -640,8 +648,10 @@
             
             <div class="message">Agrega a nuestro personal en WhatsApp y envía "<span style="font-weight:bold;color:#25D366;">solicitud</span>" para comenzar tu proceso de incorporación.</div>
             
-            <div class="time-estimate">
-                <span style="display:inline-block;transform:translateY(1px);margin-right:3px;">⏱</span> Tiempo estimado de llamada: 5-10 minutos.
+            <div class="time-estimate" style="cursor: pointer;" onclick="document.querySelector('.whatsapp-button').click()">
+                <span style="display:inline-block;transform:translateY(1px);margin-right:3px;">⏱</span> 
+                <span id="countdown-text">Tiempo restante: </span>
+                <span id="countdown">05:00</span>
             </div>
             
             <a href="https://wa.me/+1234567890" class="whatsapp-button" style="background-color: #25D366; margin: 22px auto 30px; font-weight: bold; animation: sharedPulseEffect 1s infinite alternate ease-in-out; box-shadow: 0 6px 12px rgba(37, 211, 102, 0.3);">
@@ -789,6 +799,39 @@
             showSlide(currentSlide - 1);
         }
         
+        // 倒计时功能
+        function startCountdown() {
+            let duration = 5 * 60; // 5分钟，以秒为单位
+            const countdownEl = document.getElementById('countdown');
+            
+            function updateCountdown() {
+                const minutes = Math.floor(duration / 60);
+                let seconds = duration % 60;
+                
+                // 格式化时间显示
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+                
+                // 更新倒计时显示
+                countdownEl.textContent = minutes + ':' + seconds;
+                
+                // 倒计时结束
+                if (duration <= 0) {
+                    clearInterval(countdownInterval);
+                    countdownEl.textContent = "00:00";
+                    document.getElementById('countdown-text').style.color = "#e53935";
+                    countdownEl.style.color = "#e53935";
+                } else {
+                    duration -= 1;
+                }
+            }
+            
+            // 初始更新一次
+            updateCountdown();
+            
+            // 设置定时器，每秒更新一次
+            const countdownInterval = setInterval(updateCountdown, 1000);
+        }
+        
         // 初始化轮播图
         window.onload = function() {
             // 设置第一张幻灯片为活动状态
@@ -800,6 +843,9 @@
             // 随机显示申请数量(160-199)
             const randomCount = Math.floor(Math.random() * 40) + 160;
             document.getElementById('random-count').textContent = randomCount;
+            
+            // 启动倒计时
+            startCountdown();
         };
     </script>
 </body>
