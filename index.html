@@ -121,17 +121,17 @@
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             z-index: 1;
-            animation: pulseEffect 2s infinite alternate ease-in-out;
+            animation: sharedPulseEffect 1s infinite alternate ease-in-out;
         }
         
-        @keyframes pulseEffect {
+        @keyframes sharedPulseEffect {
             0% {
-                transform: scale(1);
+                transform: scale(0.97);
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             }
             100% {
-                transform: scale(1.02);
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+                transform: scale(1.05);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             }
         }
         
@@ -185,18 +185,7 @@
             border: none;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-            animation: buttonPulse 2s infinite alternate ease-in-out;
-        }
-        
-        @keyframes buttonPulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-            }
-            100% {
-                transform: scale(1.04);
-                box-shadow: 0 6px 12px rgba(37, 211, 102, 0.4);
-            }
+            animation: sharedPulseEffect 1s infinite alternate ease-in-out;
         }
         
         .limited-box-wrapper:hover .whatsapp-button {
@@ -236,9 +225,10 @@
         }
         
         .time-estimate {
-            color: #2e7d32;
+            color: #e53935;
             font-size: 18px;
             margin-top: 10px;
+            margin-bottom: 15px;
             font-weight: bold;
         }
         
@@ -617,15 +607,15 @@
                         El límite de solicitudes es de <span>200</span> ¡postula antes que se acabe el plazo!
                     </div>
                     
-                    <div class="time-estimate">
-                        Tiempo estimado de llamada: 5-10 minutos.
-                    </div>
-                    
                     <div class="welcome">¡Bienvenido a nuestro equipo!</div>
                 
                     <div class="message">¡Gracias por tu interés! Has completado el proceso de solicitud.</div>
                     
                     <div class="message">Agrega a nuestro personal en WhatsApp y envía "solicitud" para comenzar tu proceso de incorporación.</div>
+                    
+                    <div class="time-estimate">
+                        Tiempo estimado de llamada: 5-10 minutos.
+                    </div>
                     
                     <div class="whatsapp-button">Envie e entre em contato conosco via WhatsApp</div>
                 </div>
